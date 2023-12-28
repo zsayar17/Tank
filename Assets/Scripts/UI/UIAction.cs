@@ -16,7 +16,7 @@ public class UIAction : MonoBehaviour
             return instance;
         }
     }
-
+	//awake
     private void Awake()
     {
         anim = GetComponent<Animator>();
