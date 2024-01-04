@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+
 public struct GameAction
 {
     public void Awake()
@@ -14,7 +15,18 @@ public struct GameAction
 
 public enum ActionModes : short
 {
-    SHOOT, MOVEMENT, NONE
+    NONE, SHOOT, MOVEMENT
+}
+
+public class ActionAbilities
+{
+    public static int FullAbility = 2;
+
+
+    // Tank
+    public static int HalfMovement = 1;
+    public static int FullMovement = 2;
+    public static int Shoot = 2;
 }
 
 public struct Action
@@ -40,10 +52,11 @@ public struct Action
         if (!FinishAction) return;
 
         if (weight >= 1) weight = 0;
-        else 
+        else
         {
             UIAction.Instance.Open();
             w = weight;
+
         }
 
         isAction = false;
@@ -63,6 +76,5 @@ public struct Action
         w = 0;
         isAction = true;
     }
-
-   
 }
+

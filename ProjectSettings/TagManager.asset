@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Enemy
   - Ground
+  - Team1
+  - Team2
+  - Team0
+  - Done
   layers:
   - Default
   - TransparentFX

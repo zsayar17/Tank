@@ -48,5 +48,6 @@ public abstract class ObuseTank : ShooterTank
         targetRot = Quaternion.Euler(0, targetRot.eulerAngles.y, targetRot.eulerAngles.z);
         readyToShoot = false;
         isShooting = true;
+        team.SetDone(this); //simdilik burada
     }
 }

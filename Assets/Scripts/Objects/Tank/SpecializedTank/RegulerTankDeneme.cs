@@ -13,5 +13,11 @@ public class RegulerTankDeneme : RegularTank
 
     }
 
+    protected override void SpecializedAwake()
+    {
+    }
 
+    protected override void SpecializedUpdate()
+    {
+    }
 }

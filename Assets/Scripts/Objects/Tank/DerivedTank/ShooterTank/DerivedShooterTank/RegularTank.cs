@@ -30,11 +30,12 @@ public abstract class RegularTank : ShooterTank
 
         if (!readyToShoot || !focusOnTarget) return;
 
-        new_bullet =  Instantiate(Bullet, headOfBarrel.position, barrel.rotation);
+        new_bullet = Instantiate(Bullet, headOfBarrel.position, barrel.rotation);
         new_bullet.GetComponent<RegularBullet>()._regularAttributes = regularAttributes;
 
         targetRot = Quaternion.Euler(0, targetRot.eulerAngles.y, targetRot.eulerAngles.z);
         readyToShoot = false;
         isShooting = true;
+        team.SetDone(this); //simdilik burada
     }
 }
