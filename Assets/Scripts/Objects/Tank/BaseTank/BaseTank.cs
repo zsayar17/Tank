@@ -18,7 +18,6 @@ public abstract partial class BaseTank : BaseObject
         Movement(); // movement of tank from BaseTank but can be changed from specialized class
         DerivedUpdate(); // update derived variables from derived class
         SpecializedUpdate(); // update specialized variables from specialized class
-        
     }
 
     protected virtual void DerivedAwake() { /*do nothing */ }

@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public abstract partial class BaseTank : BaseObject
 {
     public void TriggerMovement()
@@ -19,8 +15,7 @@ public abstract partial class BaseTank : BaseObject
     {
         if (GamePoints.MovementPoint.CheckMovementArea(GameAreas.FullTankArea.RADIUS / 2)) Action.SetWeight(1);
         else Action.SetWeight(0.5f);
-
-        freezeBaseLayer = true;
+        freezeBaseLayer = true; //Layer freezleme islemleri sadece en ust katmanda yapilir.
         CloseMovementMode();
     }
 
@@ -28,8 +23,10 @@ public abstract partial class BaseTank : BaseObject
     {
         if (freezeBaseLayer && !GamePoints.MovementPoint.IsDistancePointBetweenTank)
         {
-            freezeBaseLayer = false;
+            freezeBaseLayer = false; //Layer freezleme islemleri sadece en ust katmanda yapilir.
             Action.FinishAction = true;
+
+            team.SetDone(this);
         }
     }
 
@@ -41,5 +38,4 @@ public abstract partial class BaseTank : BaseObject
         GameAreas.FullTankArea.Activate(tank.transform.position, tank.movementdistance / 2);
         GameCamera.CameraController.SetDistance(DistanceWithCamera);
     }
-
 }

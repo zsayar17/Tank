@@ -3,13 +3,14 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-
     public GameAreas GameAreas;
     public GamePhysics GamePhysics;
     public GameSelect GameSelect;
     public GamePoints GamePoints;
     public GameAction GameAction;
     public GameCamera GameCamera;
+
+    public GameTour GameTour;
 
     private static GameManager instance;
     public static GameManager Instance
@@ -31,6 +32,7 @@ public class GameManager : MonoBehaviour
         GameAreas.Awake();
         GameAction.Awake();
         GameCamera.Awake();
+        GameTour.Awake();
     }
 
     private void Update()
@@ -41,6 +43,7 @@ public class GameManager : MonoBehaviour
         GameAction.Update();
         GameCamera.Update();
         GamePoints.Update();
+        GameTour.Update();
     }
 }
 

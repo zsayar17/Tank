@@ -31,7 +31,7 @@ public class SelectTank
         {
             if (OnUI || Action.isActionMode || Action.IsNextAction) return true; // UI uzerindeyse ya da bir aksiyonda bulunuyorsa true.
 
-            return RayCatch.CatchGameObject.CompareTag("Player") & !Action.isAction; // Player ise true degilse false doner ve aksiyon da degilse
+            return RayCatch.CatchGameObject.CompareTag("Team" + GameTour.currentTeamIndex) & !Action.isAction; // Player ise true degilse false doner ve aksiyon da degilse
         }
     }
 
@@ -40,7 +40,6 @@ public class SelectTank
         if (!Action.isActionMode && IsSelectableTank && !OnUI && !Action.IsNextAction)
         {
             if (currentTank != null) currentTank.isSelected = false;
-
             currentTank = RayCatch.CatchComponent<BaseTank>();
             currentTank.isSelected = true;
 

@@ -9,28 +9,20 @@ public abstract partial class BaseTank : BaseObject
     [HideInInspector] public int movementdistance;
 
     [HideInInspector] public ActionModes actionMode = ActionModes.NONE;
-
     NavMeshAgent agent;
     [SerializeField] GameObject overwatch;
     [SerializeField] protected GameObject Turret;
     protected bool freezeBaseLayer, freezeDerivedLayer;
-
-
     protected abstract void SetTankFeautures();
+
     void SetBaseVariables()
     {
         agent = transform.GetComponent<NavMeshAgent>();
         Turret = transform.GetChild(0).gameObject;
-        SetOverWatch(false);
-
         objectType = ObjectType.Tank;
 
-        isSelected = false;
-        freezeBaseLayer = false;
-        freezeDerivedLayer = false;
-        SetMovementVariables();
+        SetOverWatch(false);
     }
-
 
     public float DistanceWithCamera
     {

@@ -1,4 +1,5 @@
 
+using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine;
 
 public abstract partial class ShooterTank : BaseTank
@@ -10,22 +11,20 @@ public abstract partial class ShooterTank : BaseTank
 
     void UpdateHitPoint()
     {
-        
+        GameObject hitObject;
 
         if (actionMode != ActionModes.SHOOT) return;
 
-        if (RayCatch.CatchObject("Enemy") == null) return;
+        hitObject = RayCatch.CatchGameObject;
+        if (!team.IsEnemy(hitObject)) return;
 
-        catchedObject = RayCatch.CatchObject("Enemy");
-
-        Action.SetWeight(1);
-
+        catchedObject = hitObject;
         focusOnTarget = true;
         isShooting = false;
 
         SetOverWatch(false);
-
-        CalculateTargetPos();
+        CalculateTargetPos();// fix here
+        Action.SetWeight(1);
     }
 
     void HorizontalRotateTurret(Vector3 TargetPosition)
@@ -47,13 +46,16 @@ public abstract partial class ShooterTank : BaseTank
     {
         if (Vector3.Angle(Turret.transform.forward, target - Turret.transform.position) > 1) return;
 
-        if (!isShooting) readyToShoot = true;
+        if (!isShooting)
+        {
+            //CalculateTargetPos(); // fix here
+            readyToShoot = true;
+        }
         else
         {
             focusOnTarget = false;
             readyToShoot = false;
             isShooting = false;
-
         }
     }
 
